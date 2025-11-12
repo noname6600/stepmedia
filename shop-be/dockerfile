@@ -1,0 +1,23 @@
+FROM mcr.microsoft.com/openjdk/jdk:17-ubuntu
+
+WORKDIR /app
+
+# Copy Gradle wrapper và file root Gradle
+COPY gradlew build.gradle settings.gradle ./
+COPY gradle ./gradle
+
+# Copy module
+COPY common ./common
+COPY shop-management ./shop-management
+
+# Convert line endings và set executable
+RUN apt-get update && apt-get install -y dos2unix \
+    && dos2unix gradlew \
+    && chmod +x gradlew
+
+# Build project
+RUN ./gradlew clean build --no-daemon
+
+EXPOSE 8080
+
+CMD ["java", "-jar", "shop-management/build/libs/shop-management.jar"]

@@ -1,0 +1,42 @@
+dependencies {
+    api project(':common:util')
+
+    /**
+     * Spring framework
+     */
+    implementation("org.springframework:spring-context:$spring_framework_version")
+    implementation("org.springframework:spring-web:$spring_framework_version")
+
+    /**
+     * Lombok
+     */
+    implementation("org.projectlombok:lombok:$lombok_version")
+    annotationProcessor("org.projectlombok:lombok:$lombok_version")
+
+    /**
+     * Slf4j
+     */
+    implementation("org.slf4j:slf4j-api:$slf4j_version")
+
+    /**
+     * Aspectj
+     */
+    implementation("org.aspectj:aspectjweaver:$aspectjweaver_version")
+
+    /**
+     * Jackson
+     */
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson_version")
+
+    /**
+     * google code
+     */
+    implementation("com.googlecode.protobuf-java-format:protobuf-java-format:$protobuf_format_version")
+    implementation("com.google.protobuf:protobuf-java:$protobuf_java_version")
+
+    /**
+     * Jakarta
+     */
+    compileOnly "jakarta.servlet:jakarta.servlet-api:$servlet_api_version"
+
+}

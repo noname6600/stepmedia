@@ -1,0 +1,9 @@
+dependencies {
+    /**
+     * Spring
+     */
+    implementation "org.springframework:spring-webmvc:${spring_framework_version}"
+    implementation "io.grpc:grpc-stub:${grpc_version}"
+
+    api project(':common:util')
+}

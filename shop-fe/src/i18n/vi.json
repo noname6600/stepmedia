@@ -1,0 +1,133 @@
+{
+  "customer": {
+    "tableName": "Danh sách khách hàng",
+    "objectName": "khách hàng",
+    "id": "Mã khách hàng",
+    "fullName": "Tên khách hàng",
+    "email": "Email",
+    "dob": "Ngày sinh",
+    "from": "Từ ngày",
+    "to": "Đến ngày",
+    "createdDate": "Ngày tạo",
+    "createdBy": "Người tạo",
+    "lastModifiedDate": "Ngày cuối sửa đổi",
+    "lastModifiedBy": "Lần cuối sửa đổi bởi"
+  },
+  "shop": {
+    "tableName": "Danh sách cửa hàng",
+    "objectName": "cửa hàng",
+    "id": "Mã cửa hàng",
+    "name": "Tên cửa hàng",
+    "location": "Địa chỉ",
+    "from": "Từ ngày",
+    "to": "Đến ngày",
+    "createdDate": "Ngày tạo",
+    "createdBy": "Người tạo",
+    "lastModifiedDate": "Ngày cuối sửa đổi",
+    "lastModifiedBy": "Lần cuối sửa đổi bởi"
+  },
+  "product": {
+    "tableName": "Danh sách sản phẩm",
+    "objectName": "sản phẩm",
+    "id": "Mã sản phẩm",
+    "name": "Tên sản phẩm",
+    "description": "Mô tả",
+    "price": "Giá",
+    "shopId": "Cửa hàng",
+    "shop": {
+      "name": "Cửa hàng"
+    },
+    "from": "Từ ngày",
+    "to": "Đến ngày",
+    "createdDate": "Ngày tạo",
+    "createdBy": "Người tạo",
+    "lastModifiedDate": "Ngày cuối sửa đổi",
+    "lastModifiedBy": "Lần cuối sửa đổi bởi"
+  },
+  "order": {
+    "tableName": "Danh sách đơn hàng",
+    "objectName": "đơn hàng",
+    "id": "Mã đơn hàng",
+    "name": "Tên đơn hàng",
+    "description": "Mô tả",
+    "customer": "Khách hàng",
+    "customerId": "Khách hàng",
+    "shop": "Cửa hàng",
+    "shopId": "Cửa hàng",
+    "product": "Sản phẩm",
+    "productId": "Sản phẩm",
+    "status": "Trạng thái",
+    "from": "Từ ngày",
+    "to": "Đến ngày",
+    "createdDate": "Ngày tạo",
+    "createdBy": "Người tạo",
+    "lastModifiedDate": "Ngày cuối sửa đổi",
+    "lastModifiedBy": "Lần cuối sửa đổi bởi"
+  },
+  "buttons": {
+    "confirm": "Xác nhận",
+    "cancel": "Hủy",
+    "delete": "Xóa",
+    "edit": "Chỉnh sửa",
+    "add": "Thêm",
+    "addMore": "Thêm nhiều",
+    "send": "Gửi",
+    "save": "Lưu",
+    "search": "Tìm kiếm"
+  },
+  "labels": {
+    "home": "Trang chủ",
+    "inputValue": "Nhập giá trị",
+    "search": "Tìm kiếm",
+    "select": "Chọn",
+    "customer": "Khách hàng",
+    "shop": "Cửa hàng",
+    "product": "Sản phẩm",
+    "order": "Đơn hàng",
+    "detail": {
+      "customer": "Chi tiết Khách hàng",
+      "shop": "Chi tiết cửa hàng",
+      "product": "Chi tiết sản phẩm",
+      "order": "Chi tiết đơn hàng"
+    },
+    "new": {
+      "customer": "Tạo mới Khách hàng",
+      "shop": "Tạo mới cửa hàng",
+      "product": "Tạo mới sản phẩm",
+      "order": "Tạo mới đơn hàng"
+    }
+  },
+  "language": {
+    "VI": "Tiếng Việt",
+    "EN": "Tiếng Anh"
+  },
+  "boolean": {
+    "true": "Có",
+    "false": "Không"
+  },
+  "orderStatus": {
+    "N": "Mới",
+    "A": "Kích hoạt",
+    "C": "Đã hủy"
+  },
+  "common": {
+    "notFoundData": "Không tìm thấy dữ liệu",
+    "filter": "Bộ lọc"
+  },
+  "audit": {
+    "createdDate": "Ngày tạo",
+    "lastModifiedDate": "Ngày chỉnh sửa"
+  },
+  "validation": {
+    "phoneNumber": "Số điện thoại chỉ bao gồm các chữ số 0-9.",
+    "password": "Mật khẩu không được chứa khoảng trắng.",
+    "username": "Tên tài khoản từ 6 tới 25 ký tự, chỉ bao gồm chữ cái thường, chữ cái in hoa, số và dấu gạch dưới.",
+    "code": "Mã chỉ bao gồm các ký tự A-Z, a-z, 0-9, - và _."
+  },
+  "errors": {
+    "servererror": {
+      "title": "Lỗi máy chủ",
+      "content": "Dịch vụ hiện tại không thể thực hiện được hoặc đang bảo trì. Vui lòng thử lại sau."
+    }
+  }
+}

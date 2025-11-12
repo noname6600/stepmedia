@@ -1,0 +1,12 @@
+package.json
+dist
+yarn.lock
+src/api
+package-lock.json
+.gitignore
+.husky
+.prettierignore
+public
+!public/index.html
+!public/manifest.json
+pnpm-lock.yaml

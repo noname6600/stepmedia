@@ -1,0 +1,75 @@
+{
+  "name": "com.thanhvh.stepmedia",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint --fix",
+    "generate:api": "openapi-generator-cli generate -i http://localhost:8080/v3/api-docs/all -g typescript-axios -o src/api --additional-properties=stringEnums=true --additional-properties=useSingleRequestParameter=true",
+    "pretty": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\"",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "axios": "1.1.3",
+    "i18next": "^22.4.8",
+    "moment": "^2.29.4",
+    "rc-field-form": "^1.27.4",
+    "rc-notification": "^5.0.3",
+    "rc-table": "^7.31.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-flatpickr": "^3.10.13",
+    "react-i18next": "^12.1.1",
+    "react-router-dom": "^6.3.0",
+    "react-transition-group": "^4.4.5",
+    "tw-elements": "^1.0.0-alpha13"
+  },
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.5.2",
+    "@types/lodash": "^4.14.191",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.10",
+    "@types/react-flatpickr": "^3.8.8",
+    "@types/react-transition-group": "^4.4.6",
+    "@typescript-eslint/eslint-plugin": "^5.47.1",
+    "@typescript-eslint/parser": "^5.47.1",
+    "@vitejs/plugin-react": "^2.0.0",
+    "autoprefixer": "^10.4.7",
+    "eslint": "^8.31.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-standard-with-typescript": "^24.0.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-import-resolver-typescript": "^3.5.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.31.11",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-simple-import-sort": "^8.0.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.1.0",
+    "lodash": "^4.17.21",
+    "postcss": "^8.4.14",
+    "prettier": "^2.8.1",
+    "tailwindcss": "^3.2.4",
+    "typescript": "*",
+    "typescript-eslint": "^0.0.1-alpha.0",
+    "vite": "^3.0.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "npm run pretty",
+      "npm run lint"
+    ],
+    "*.{yml,yaml,json}": [
+      "npm run pretty"
+    ]
+  }
+}

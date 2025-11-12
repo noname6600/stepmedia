@@ -1,0 +1,30 @@
+dependencies {
+    api project(':common:exception')
+    api project(':common:logging')
+    api project(':common:cache')
+
+    /**
+     * Spring
+     */
+    implementation("org.springframework.data:spring-data-commons:$spring_data_commons_version")
+    implementation("org.springframework:spring-webmvc:$spring_framework_version")
+    implementation("org.springframework:spring-web:$spring_framework_version")
+    implementation("org.springframework:spring-tx:$spring_framework_version")
+
+    /**
+     * Open API
+     */
+    implementation("org.springdoc:springdoc-openapi-starter-common:$open_api_version")
+
+    /**
+     * Lombok
+     */
+    compileOnly("org.projectlombok:lombok:$lombok_version")
+    annotationProcessor("org.projectlombok:lombok:$lombok_version")
+
+    /**
+     * Jakarta
+     */
+    implementation("jakarta.persistence:jakarta.persistence-api:$persistence_api_version")
+    compileOnly("jakarta.servlet:jakarta.servlet-api:$servlet_api_version")
+}

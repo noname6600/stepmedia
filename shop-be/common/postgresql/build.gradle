@@ -1,0 +1,44 @@
+dependencies {
+    api project(':common:exception')
+    api project(':common:rest')
+    api project(':common:util')
+
+    /**
+     * Spring
+     */
+    implementation("org.springframework.data:spring-data-jpa:$spring_data_jpa_version") {
+        exclude module: 'slf4j-api'
+    }
+    implementation("org.springframework:spring-web:$spring_framework_version")
+    implementation("org.springframework:spring-webmvc:$spring_framework_version")
+
+    /**
+     * Jakarta
+     */
+    implementation("jakarta.persistence:jakarta.persistence-api:$persistence_api_version")
+
+    /**
+     * Lombok
+     */
+    compileOnly("org.projectlombok:lombok:$lombok_version")
+    annotationProcessor("org.projectlombok:lombok:$lombok_version")
+
+    /**
+     * Postgresql
+     */
+    implementation("org.postgresql:postgresql:$postgresql_version") {
+        exclude module: 'checker-qual'
+    }
+
+    /**
+     * Hibernate
+     */
+    implementation("org.hibernate:hibernate-core:$hibernate_core_version") {
+        exclude module: 'jboss-logging'
+    }
+
+    /**
+     * Slf4j
+     */
+    implementation("org.slf4j:slf4j-api:$slf4j_version")
+}

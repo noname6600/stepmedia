@@ -1,0 +1,27 @@
+dependencies {
+    api project(':common:rest')
+    api project(':common:exception')
+
+    /**
+     * Lombok
+     */
+    compileOnly("org.projectlombok:lombok:$lombok_version")
+    annotationProcessor("org.projectlombok:lombok:$lombok_version")
+
+    implementation("org.springframework:spring-web:$spring_framework_version")
+    implementation("org.springframework:spring-tx:$spring_framework_version")
+    implementation("org.springframework:spring-orm:$spring_framework_version")
+
+    /**
+     * Quartz
+     */
+    implementation "org.springframework.boot:spring-boot-starter-quartz:$spring_boot_version"
+    implementation "org.springframework:spring-context-support:$context_version"
+
+    /**
+     * Jackson
+     */
+    implementation "com.fasterxml.jackson.core:jackson-core:$jackson_version"
+    implementation "com.fasterxml.jackson.core:jackson-annotations:$jackson_version"
+}
+

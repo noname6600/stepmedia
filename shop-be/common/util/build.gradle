@@ -1,0 +1,39 @@
+dependencies {
+    /**
+     * Spring
+     */
+    implementation("org.springframework:spring-web:$spring_framework_version")
+
+    /**
+     * Lombok
+     */
+    compileOnly("org.projectlombok:lombok:$lombok_version")
+    annotationProcessor("org.projectlombok:lombok:$lombok_version")
+
+    /**
+     * Jackson
+     */
+    implementation("com.fasterxml.jackson.core:jackson-annotations:$jackson_version")
+    implementation("com.fasterxml.jackson.core:jackson-databind:$jackson_version")
+
+    /**
+     * Gson
+     */
+    implementation("com.google.code.gson:gson:$gson_version")
+
+    /**
+     * Javax
+     */
+    compileOnly("jakarta.servlet:jakarta.servlet-api:$servlet_api_version")
+
+    /**
+     * Codec
+     */
+    implementation "commons-codec:commons-codec:$codec_version"
+
+    /**
+     * Apache
+     */
+    implementation "commons-validator:commons-validator:$apache_version"
+}
+

@@ -1,0 +1,41 @@
+dependencies {
+    api project(':common:exception')
+    api project(':common:logging')
+    api project(':common:util')
+
+    /**
+     * Spring
+     */
+    implementation("org.springframework.boot:spring-boot-autoconfigure:$spring_boot_version")
+    implementation("org.springframework.data:spring-data-commons:$spring_data_commons_version") {
+        exclude module: 'slf4j-api'
+    }
+
+    implementation("org.springframework.security:spring-security-config:$spring_security_version")
+    implementation("org.springframework.security:spring-security-oauth2-jose:$spring_security_version")
+    implementation("org.springframework.security:spring-security-oauth2-resource-server:$spring_security_version")
+
+    implementation("org.springframework:spring-webmvc:$spring_framework_version")
+
+    /**
+     * Lombok
+     */
+    compileOnly("org.projectlombok:lombok:$lombok_version")
+    annotationProcessor("org.projectlombok:lombok:$lombok_version")
+
+    /**
+     * Jackson
+     */
+    implementation("com.fasterxml.jackson.core:jackson-annotations:$jackson_version")
+    implementation("com.fasterxml.jackson.core:jackson-core:$jackson_version")
+
+    /**
+     * Jakarta
+     */
+    compileOnly("jakarta.servlet:jakarta.servlet-api:$servlet_api_version")
+
+    /**
+     * Slf4j
+     */
+    implementation("org.slf4j:slf4j-api:$slf4j_version")
+}

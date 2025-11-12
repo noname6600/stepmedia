@@ -1,0 +1,13 @@
+rootProject.name = 'shop-management-backend'
+include ':common'
+include ':shop-management'
+include(':common:util')
+include(':common:exception')
+include(':common:logging')
+include(':common:cache')
+include(':common:security')
+include(':common:rest')
+include(':common:postgresql')
+include(":common:boot")
+include(":common:jpa")
+include(":common:scheduler")

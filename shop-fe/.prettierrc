@@ -1,0 +1,38 @@
+{
+  "bracketSpacing": true,
+  "jsxBracketSameLine": false,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "parser": "babel-ts",
+  "printWidth": 120,
+  "arrowParens": "avoid",
+  "tabWidth": 2,
+  "overrides": [
+    {
+      "files": "*.json",
+      "options": {
+        "parser": "json"
+      }
+    },
+    {
+      "files": ["*.yml", "*.yaml"],
+      "options": {
+        "tabWidth": 2,
+        "trailingComma": "none",
+        "parser": "yaml"
+      }
+    },
+    {
+      "files": ["*.html"],
+      "options": {
+        "parser": "html"
+      }
+    },
+    {
+      "files": ["*.md"],
+      "options": {
+        "parser": "markdown"
+      }
+    }
+  ]
+}

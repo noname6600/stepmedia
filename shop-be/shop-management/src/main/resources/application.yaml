@@ -1,0 +1,138 @@
+server:
+  port: ${PORT:8080}
+spring:
+  task:
+    execution:
+      pool:
+        core-size: 15
+        max-size: 30
+        queue-capacity: 500
+      thread-name-prefix: stepmedia-test-task-
+  profiles:
+    active: ${ENV:dev}
+  application:
+    name: stepmedia-test
+  mail:
+    host: ${MAIL_HOST:email-smtp.us-east-1.amazonaws.com}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USER:a}
+    password: ${MAIL_PASSWORD:a}
+    properties:
+      sender: ${MAIL_SENDER:noreply@bizzone.vn}
+      debug: false
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  servlet:
+    multipart:
+      max-request-size: 10MB
+      max-file-size: 10MB
+  quartz:
+    job-store-type: jdbc
+    jdbc:
+      initialize-schema: ALWAYS
+    properties:
+      org.quartz.scheduler.instanceName: quartz-stepmedia
+      org.quartz.scheduler.instanceId: AUTO
+      org.quartz.scheduler.instanceIdGenerator.class: com.thanhvh.scheduler.config.CustomQuartzInstanceIdGenerator
+      org.quartz.threadPool.threadCount: 10
+      org.quartz.threadPool.threadPriority: 5
+      org.quartz.jobStore.driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
+      org.quartz.jobStore.useProperties: true
+      org.quartz.jobStore.misfireThreshold: 10000
+      org.quartz.jobStore.tablePrefix: qrtz_
+      org.quartz.jobStore.isClustered: true
+  cache:
+    type: redis
+  jpa:
+    database-platform: com.thanhvh.postgresql.dialect.UnAccentPostgreSQLDialect
+    properties:
+      hibernate.dialect: com.thanhvh.postgresql.dialect.UnAccentPostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+  sql:
+    init:
+      schema-locations: classpath:script.sql
+      mode: always
+  data:
+    redis:
+      repositories:
+        enabled: false
+      host: ${REDIS_HOST:localhost}
+      port: 6380
+common:
+  scheduler:
+    trigger:
+      cron-jobs:
+        active-orders:
+          group-key: SYSTEM
+          job-name: active-orders
+          cron-expression: '0 */5 * * * ?'
+  rest:
+    open-api:
+      servers: ${OPEN_API_SERVER:http://localhost:8080}
+  security:
+    cors:
+      allowed-origins: ${CORS_ORIGINS:http://localhost:8080, http://localhost:3000}
+      allowed-methods: ${CORS_METHODS:*}
+      allowed-headers: ${CORS_HEADERS:*}
+    path-matcher:
+      permit-all-path-patterns:
+        - /webjars/swagger-ui/**
+        - /v3/api-docs/**
+        - /swagger-resources/**
+        - /webjars/**
+        - /swagger-ui/**
+        - /swagger-ui.html
+        - /null/swagger-resources/**
+        - /actuator/**
+        - /**
+  datasource:
+    master:
+      url: ${MASTER_DATABASE_URL:jdbc:postgresql://localhost:5432/postgres}
+      username: ${MASTER_DATABASE_USER:admin}
+      password: ${MASTER_DATABASE_PWD:123456}
+      driver-class-name: org.postgresql.Driver
+      hikari:
+        pool-name: hikari-master-stepmedia-test
+        auto-commit: true
+        data-source-properties:
+          cachePrepStmts: true
+          prepStmtCacheSize: 250
+          prepStmtCacheSqlLimit: 2048
+          useServerPrepStmts: true
+        minimum-idle: 3
+        maximum-pool-size: ${MASTER_DATABASE_MAX_POOL_SIZE:100}
+      type: com.zaxxer.hikari.HikariDataSource
+    replica:
+      url: ${REPLICA_DATABASE_URL:jdbc:postgresql://localhost:5432/postgres}
+      username: ${MASTER_DATABASE_USER:admin}
+      password: ${MASTER_DATABASE_PWD:123456}
+      driver-class-name: org.postgresql.Driver
+      hikari:
+        pool-name: hikari-replica-stepmedia-test
+        auto-commit: true
+        data-source-properties:
+          cachePrepStmts: true
+          prepStmtCacheSize: 250
+          prepStmtCacheSqlLimit: 2048
+          useServerPrepStmts: true
+        minimum-idle: 3
+        maximum-pool-size: ${REPLICA_DATABASE_MAX_POOL_SIZE:100}
+      type: com.zaxxer.hikari.HikariDataSource
+logging:
+  level:
+    root: INFO
+    org:
+      apache:
+        kafka: WARN
+spring-doc:
+  swagger-ui:
+    operations-sorter: alpha
+    tags-sorter: alpha
+  group-configs:
+    - group: all
+      paths-to-match:
+        - /**

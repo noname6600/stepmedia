@@ -1,0 +1,68 @@
+version: "3.9"
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:15.3
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: "123456"
+      POSTGRES_DB: stepmedia
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - backendnet
+    restart: unless-stopped
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    networks:
+      - backendnet
+    restart: unless-stopped
+
+  backend:
+    container_name: stepmedia-backend
+    build:
+      context: .       # Dockerfile cùng thư mục với docker-compose.yml
+      dockerfile: Dockerfile  # tên Dockerfile, mặc định là Dockerfile
+    environment:
+      MASTER_DATABASE_URL: jdbc:postgresql://postgres:5432/postgres
+      REPLICA_DATABASE_URL: jdbc:postgresql://postgres:5432/postgres
+      MASTER_DATABASE_USER: admin
+      MASTER_DATABASE_PWD: 123456
+      ENV: dev
+      PORT: 8080
+      CORS_ORIGINS: "http://160.30.113.34:3000,http://stepmedia.nani.id.vn:3000,http://nani.id.vn:3000,http://localhost:3000,http://160.30.113.34:8080"
+      CORS_METHODS: "*"
+      CORS_HEADERS: "*"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    networks:
+      - backendnet
+    restart: unless-stopped
+
+networks:
+  backendnet:
+    driver: bridge
+
+volumes:
+  postgres:
+  pgadmin:
+
+
+
+

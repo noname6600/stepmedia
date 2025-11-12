@@ -1,0 +1,4 @@
+com.thanhvh.boot.cache.CacheAutoConfiguration
+com.thanhvh.boot.logging.LoggingAutoConfiguration
+com.thanhvh.boot.rest.RestAutoConfiguration
+com.thanhvh.boot.security.SecurityAutoConfiguration

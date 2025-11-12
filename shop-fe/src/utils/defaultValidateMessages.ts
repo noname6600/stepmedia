@@ -1,0 +1,47 @@
+export const defaultValidateMessages = {
+  default: "Sai định dạng trường '${name}'.",
+  required: "'${name}' không được bỏ trống.",
+  enum: "'${name}' phải nằm trong các giá trị [${enum}].",
+  whitespace: "'${name}' không được rỗng.",
+  date: {
+    format: "'${name}' không đúng định dạng ngày.",
+    parse: "'${name}' không đúng định dạng ngày.",
+    invalid: "'${name}' không đúng định dạng ngày.",
+  },
+  types: {
+    string: "'${name}' phải là chuỗi ký tự.",
+    method: "'${name}' phải là ${type}.",
+    array: "'${name}' phải là mảng.",
+    object: "'${name}' phải là ${type}.",
+    number: "'${name}' phải là số thực hoặc số nguyên.",
+    date: "'${name}' phải là định dạng ngày.",
+    boolean: "'${name}' phải là Có/Không.",
+    integer: "'${name}' phải là số nguyên.",
+    float: "'${name}' phải là số thực.",
+    regexp: "'${name}' phải thỏa ${type}.",
+    email: "'${name}' không đúng định dạng.",
+    url: "'${name}' không đúng định dạng.",
+    hex: "'${name}' không đúng định dạng.",
+  },
+  string: {
+    len: "'${name}' phải có độ dài đúng ${len} ký tự.",
+    min: "'${name}' phải có ít nhất ${min} ký tự.",
+    max: "'${name}' chỉ được tối đa ${max} ký tự.",
+    range: "'${name}' phải từ ${min} đến ${max} ký tự.",
+  },
+  number: {
+    len: "'${name}' phải bằng đúng ${len}.",
+    min: "'${name}' phải lớn hơn hoặc bằng ${min}.",
+    max: "'${name}' phải bé hơn hoặc bằng ${max}.",
+    range: "'${name}' phải từ ${min} đến ${max}.",
+  },
+  array: {
+    len: "'${name}' phải có đúng ${len} phần tử.",
+    min: "'${name}' phải có ít nhất ${min} phần tử.",
+    max: "'${name}' chỉ được tối đa ${max} phần tử.",
+    range: "'${name}' phải có từ ${min} đến ${max} phần tử.",
+  },
+  pattern: {
+    mismatch: "'${name}' không đúng định dạng ${pattern}.",
+  },
+};

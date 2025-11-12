@@ -1,0 +1,43 @@
+dependencies {
+
+    /**
+     * Spring
+     */
+    implementation("org.springframework.boot:spring-boot-autoconfigure:$spring_boot_version")
+    implementation("org.springframework.data:spring-data-jpa:$spring_data_jpa_version") {
+        exclude module: 'slf4j-api'
+    }
+    implementation("org.springframework:spring-web:$spring_framework_version")
+    implementation("org.springframework:spring-tx:$spring_framework_version")
+    implementation("org.springframework:spring-orm:$spring_framework_version")
+
+    /**
+     * Hikari
+     */
+    implementation("com.zaxxer:HikariCP:$hikari_version") {
+        exclude module: 'slf4j-api'
+    }
+
+    /**
+     * Slf4j
+     */
+    implementation("org.slf4j:slf4j-api:$slf4j_version")
+
+    /**
+     * Lombok
+     */
+    compileOnly("org.projectlombok:lombok:$lombok_version")
+    annotationProcessor("org.projectlombok:lombok:$lombok_version")
+
+    /**
+     * Jakarta
+     */
+    implementation("jakarta.validation:jakarta.validation-api:$validation_api_version")
+    implementation("jakarta.persistence:jakarta.persistence-api:$persistence_api_version")
+    compileOnly("jakarta.servlet:jakarta.servlet-api:$servlet_api_version")
+
+    /**
+     * Jackson
+     */
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson_version")
+}

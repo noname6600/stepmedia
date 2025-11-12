@@ -1,0 +1,60 @@
+plugins {
+    id 'org.springframework.boot' version "$spring_boot_version"
+    id 'io.spring.dependency-management' version "$dependency_management_version"
+}
+
+group = 'com.thanhvh'
+
+
+dependencies {
+
+    implementation project(':common:boot')
+    implementation project(':common:jpa')
+    implementation project(':common:postgresql')
+    implementation project(':common:scheduler')
+
+    /**
+     * Spring
+     */
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation('org.springframework.boot:spring-boot-starter-validation')
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.springframework.boot:spring-boot-starter-test')
+    annotationProcessor('org.springframework.boot:spring-boot-configuration-processor')
+    implementation 'org.springframework.boot:spring-boot-starter-quartz'
+
+    /**
+     * Quartz
+     */
+    implementation "org.springframework:spring-context-support:$context_version"
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+
+    /**
+     * SQL
+     */
+    implementation "org.postgresql:postgresql:$postgresql_version"
+    implementation "com.zaxxer:HikariCP:$hikari_version"
+    implementation "com.vladmihalcea:hibernate-types-60:$hibernate_type_version"
+
+    /**
+     * Open API
+     */
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$open_api_version")
+
+    /**
+     * Codec
+     */
+    implementation "commons-codec:commons-codec:$codec_version"
+
+    /**
+     * Gson
+     */
+    implementation "com.google.code.gson:gson:$gson_version"
+
+    /**
+     * Lombok
+     */
+    compileOnly('org.projectlombok:lombok')
+    annotationProcessor('org.projectlombok:lombok')
+
+}

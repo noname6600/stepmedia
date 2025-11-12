@@ -1,0 +1,27 @@
+dependencies {
+    api project(':common:cache')
+    api project(':common:logging')
+    api project(':common:rest')
+    api project(':common:security')
+
+    /**
+     * Spring data redis
+     */
+    implementation("org.springframework.boot:spring-boot-starter-data-redis:$spring_boot_version") {
+        exclude module: 'snakeyaml'
+        exclude module: 'slf4j-api'
+    }
+
+    /**
+     * Spring security
+     */
+    implementation("org.springframework.security:spring-security-config:$spring_security_version")
+    implementation("org.springframework.security:spring-security-web:$spring_security_version") {
+        exclude module: 'slf4j-api'
+    }
+
+    /**
+     * Open API
+     */
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$open_api_version")
+}

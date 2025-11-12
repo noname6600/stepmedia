@@ -1,0 +1,70 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:15.3
+    container_name: postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: "123456"
+      POSTGRES_DB: stepmedia
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    networks:
+      - stepmedia-net
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./shop-be
+    container_name: stepmedia-backend
+    environment:
+      MASTER_DATABASE_URL: jdbc:postgresql://postgres:5432/postgres 
+      REPLICA_DATABASE_URL: jdbc:postgresql://postgres:5432/postgres
+      MASTER_DATABASE_USER: admin
+      MASTER_DATABASE_PWD: 123456
+      ENV: prod
+      CORS_ORIGINS: "http://160.30.113.34:3000,http://stepmedia.nani.id.vn,http://nani.id.vn:3000,http://localhost:3000,http://160.30.113.34:8080" 
+      CORS_METHODS: "*" 
+      CORS_HEADERS: "*"
+      PORT: 8080
+    expose:
+      - "8080"
+    networks:
+      - stepmedia-net
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./shop-fe
+    container_name: stepmedia-frontend
+    volumes:
+      - frontend-dist:/frontend-dist  
+    networks:
+      - stepmedia-net
+    command: [ "sh", "-c", "cp -r /output/* /frontend-dist/ || true" ]
+    restart: on-failure
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx-proxy.conf:/etc/nginx/conf.d/default.conf:ro
+      - frontend-dist:/usr/share/nginx/html:ro 
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - stepmedia-net
+    restart: unless-stopped
+
+networks:
+  stepmedia-net:
+    driver: bridge
+
+volumes:
+  postgres:
+  frontend-dist:
