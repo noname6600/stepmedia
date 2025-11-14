@@ -25,7 +25,7 @@ services:
       MASTER_DATABASE_USER: admin
       MASTER_DATABASE_PWD: 123456
       ENV: prod
-      CORS_ORIGINS: "http://160.30.113.34:3000,http://stepmedia.nani.id.vn,http://nani.id.vn:3000,http://localhost:3000,http://160.30.113.34:8080" 
+      CORS_ORIGINS: "http://160.30.113.34:3000,http://stepmedia.nani.id.vn,https://stepmedia.nani.id.vn,http://nani.id.vn:3000,http://localhost:3000,http://160.30.113.34:8080" 
       CORS_METHODS: "*" 
       CORS_HEADERS: "*"
       PORT: 8080
